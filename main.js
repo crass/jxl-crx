@@ -19,6 +19,7 @@ let createWorker = () => new Promise(f =>
 			// To avoid interfering with scripting behavior, loading the URL as JPEG XL shouldn’t be tried.
 			if (!src) return
 			
+			img.removeAttribute("srcset")
 			img.src = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 			
 			let receive = async ({data}) =>
