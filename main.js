@@ -29,6 +29,7 @@ let createWorker = () => new Promise(f =>
 				if (data.error)
 				{
 					img.removeAttribute("src")
+					img.removeAttribute("srcset")
 					dispatchError(img)
 					return
 				}
@@ -142,7 +143,7 @@ let findDescriptor = (img, currentSrc, srcset) =>
 	
 	for (let [i, candidate] of srcs.entries())
 	{
-		let match = candidate.match(/^\s*([^]+?)(\s+?:([0-9]*[wx]))?\s*$/)
+		let match = candidate.match(/^\s*([^]+?)(\s+[0-9]*[wx])?\s*$/)
 		if (!match) continue
 		
 		let src = match[1]
