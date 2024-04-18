@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
+EMSDK_VER=9347bc393b94a17b93450bbc98bc3f66cef2aeb0
+LIBJXL_VER=v0.9.0
+
 rm -rf emsdk libjxl
 
-git clone https://github.com/emscripten-core/emsdk
-(cd emsdk && git reset --hard 9347bc393b94a17b93450bbc98bc3f66cef2aeb0)
-
-git clone --recursive https://github.com/libjxl/libjxl
-(cd libjxl && git reset --hard c51cffd7587d27fdd73f0be856db3b730314f03c)
+git clone --depth 1 -b ${EMSDK_VER} https://github.com/emscripten-core/emsdk
+git clone --depth 1 -b ${LIBJXL_VER} --shallow-submodules --recursive \
+  https://github.com/libjxl/libjxl
